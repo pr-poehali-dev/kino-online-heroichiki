@@ -18,7 +18,7 @@ function LiveClock() {
 
   return (
     <div className="hidden sm:flex flex-col items-end select-none">
-      <div className="flex items-center gap-1 font-mono text-sm font-semibold tracking-widest" style={{ color: 'hsl(25,100%,60%)' }}>
+      <div className="flex items-center gap-0.5 font-mono text-base font-bold tracking-normal" style={{ color: 'hsl(25,100%,60%)' }}>
         <span>{hh}</span>
         <span className="opacity-60 animate-pulse">:</span>
         <span>{mm}</span>
