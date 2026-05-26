@@ -1,6 +1,30 @@
+import { useState, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 
 type Page = 'home' | 'favorites' | 'tv' | 'schedule' | 'search';
+
+function LiveClock() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const id = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const hh = time.getHours().toString().padStart(2, '0');
+  const mm = time.getMinutes().toString().padStart(2, '0');
+  const ss = time.getSeconds().toString().padStart(2, '0');
+
+  return (
+    <div className="hidden sm:flex items-center gap-1 font-mono text-sm font-semibold tracking-widest select-none" style={{ color: 'hsl(25,100%,60%)' }}>
+      <span>{hh}</span>
+      <span className="opacity-60 animate-pulse">:</span>
+      <span>{mm}</span>
+      <span className="opacity-60 animate-pulse">:</span>
+      <span style={{ color: 'hsl(0,0%,50%)' }}>{ss}</span>
+    </div>
+  );
+}
 
 interface NavbarProps {
   currentPage: Page;
@@ -67,7 +91,8 @@ export default function Navbar({ currentPage, onNavigate, searchQuery, onSearchC
           )}
 
           {/* Right actions */}
-          <div className="ml-auto flex items-center gap-2">
+          <div className="ml-auto flex items-center gap-4">
+            <LiveClock />
             <button
               onClick={() => onNavigate('search')}
               className={`md:hidden p-2 rounded-lg transition-colors ${currentPage === 'search' ? 'text-orange-400' : 'text-gray-400 hover:text-white'}`}
