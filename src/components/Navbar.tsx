@@ -23,7 +23,7 @@ function LiveClock() {
         <span className="opacity-60 animate-pulse">:</span>
         <span>{mm}</span>
         <span className="opacity-60 animate-pulse">:</span>
-        <span style={{ color: 'hsl(0,0%,50%)' }}>{ss}</span>
+        <span style={{ color: 'hsl(25,100%,60%)' }}>{ss}</span>
       </div>
       <div className="text-xs capitalize" style={{ color: 'hsl(0,0%,45%)' }}>{date}</div>
     </div>
