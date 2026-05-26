@@ -14,14 +14,18 @@ function LiveClock() {
   const hh = time.getHours().toString().padStart(2, '0');
   const mm = time.getMinutes().toString().padStart(2, '0');
   const ss = time.getSeconds().toString().padStart(2, '0');
+  const date = time.toLocaleDateString('ru-RU', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
 
   return (
-    <div className="hidden sm:flex items-center gap-1 font-mono text-sm font-semibold tracking-widest select-none" style={{ color: 'hsl(25,100%,60%)' }}>
-      <span>{hh}</span>
-      <span className="opacity-60 animate-pulse">:</span>
-      <span>{mm}</span>
-      <span className="opacity-60 animate-pulse">:</span>
-      <span style={{ color: 'hsl(0,0%,50%)' }}>{ss}</span>
+    <div className="hidden sm:flex flex-col items-end select-none">
+      <div className="flex items-center gap-1 font-mono text-sm font-semibold tracking-widest" style={{ color: 'hsl(25,100%,60%)' }}>
+        <span>{hh}</span>
+        <span className="opacity-60 animate-pulse">:</span>
+        <span>{mm}</span>
+        <span className="opacity-60 animate-pulse">:</span>
+        <span style={{ color: 'hsl(0,0%,50%)' }}>{ss}</span>
+      </div>
+      <div className="text-xs capitalize" style={{ color: 'hsl(0,0%,45%)' }}>{date}</div>
     </div>
   );
 }
